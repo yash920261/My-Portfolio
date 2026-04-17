@@ -1,0 +1,101 @@
+.info-container {
+    background-color: #1E1E1F;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-left: 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.navigator {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    padding: 5px 25px;
+    background-color: #2B2B2CBF;
+    align-items: center;
+    display: flex;
+    column-gap: 30px;
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.navigator a {
+    text-decoration: none;
+    color: hsl(0, 0%, 84%);
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+/* Animated underline on hover for nav links */
+.navigator a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(45, 100%, 71%);
+    transition: width 0.3s ease;
+}
+
+.navigator a:hover::after,
+.navigator a.active::after {
+    width: 100%;
+}
+
+.navigator a:hover {
+    color: hsl(45, 100%, 72%);
+}
+
+.navigator a.active {
+    color: hsl(45, 100%, 71%);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+    .info-container {
+        margin-left: 0;
+        margin-top: 20px;
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info-container {
+        padding: 20px;
+        padding-top: 65px;
+        border-radius: 16px;
+    }
+
+    .navigator {
+        height: 42px;
+        padding: 4px 14px;
+        column-gap: 14px;
+        font-size: 13px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-container {
+        padding: 14px;
+        padding-top: 58px;
+        border-radius: 12px;
+    }
+
+    .navigator {
+        height: 38px;
+        padding: 4px 10px;
+        column-gap: 10px;
+        font-size: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+}

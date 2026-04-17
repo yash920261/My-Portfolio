@@ -1,0 +1,7 @@
+.underline {
+    margin: 15px 0 25px 0;
+    width: 40px;
+    height: 5px;
+    background-color: hsl(45, 100%, 71%);
+    border-radius: 10px;
+}

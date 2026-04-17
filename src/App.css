@@ -1,0 +1,18 @@
+.app-container {
+    display: flex;
+    align-items: start;
+    transition: all 0.3s ease;
+}
+
+/* Stack sidebar on top of info on tablets & below */
+@media (max-width: 1024px) {
+    .app-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-container > * {
+        width: 100%;
+        max-width: 100%;
+    }
+}
