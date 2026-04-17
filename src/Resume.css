@@ -145,6 +145,21 @@
         margin: 16px 40px;
     }
 
+    .education-item:not(:last-child)::before {
+        left: -22px;
+        top: -15px;
+    }
+
+    .education-item::after {
+        left: -27px;
+    }
+
+    .work-exp::before {
+        left: -22px;
+        top: -15px;
+        height: 40px;
+    }
+
     .ed-header {
         font-size: 16px;
     }
@@ -171,6 +186,19 @@
 
     .education-item {
         margin-bottom: 28px;
+    }
+
+    .education-item:not(:last-child)::before {
+        left: -21px;
+        height: calc(100% + 60px);
+    }
+
+    .education-item::after {
+        left: -25px;
+    }
+
+    .work-exp::before {
+        left: -21px;
     }
 
     .ed-header {
