@@ -189,16 +189,19 @@
     }
 
     .education-item:not(:last-child)::before {
-        left: -21px;
-        height: calc(100% + 60px);
+        left: -13px;
+        top: -12px;
+        height: calc(100% + 50px);
     }
 
     .education-item::after {
-        left: -25px;
+        left: -17px;
     }
 
     .work-exp::before {
-        left: -21px;
+        left: -13px;
+        top: -12px;
+        height: 35px;
     }
 
     .ed-header {
