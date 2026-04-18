@@ -3,7 +3,9 @@ import './About.css'
 import WebdevIcon from './assets/webdev-icon.png'
 import StudentIcon from './assets/student-icon.png'
 import SolidityIcon from './assets/solidity-icon.png'
+import { rocketOutline } from 'ionicons/icons'
 import Underline from './Components/Underline'
+import { IonIcon } from '@ionic/react'
 function About() {
     return (
         <>
@@ -53,7 +55,7 @@ function About() {
 
                 <div className='work'>
                     <div className="work-img">
-                        <img src={WebdevIcon} alt="" />
+                        <IonIcon className='rocket-logo' icon={rocketOutline} />
                     </div>
                     <div className='work-details'>
                         <h3>Problem Solving</h3>

@@ -59,3 +59,11 @@ body {
     font-size: 22px;
   }
 }
+
+.sub-heading {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
