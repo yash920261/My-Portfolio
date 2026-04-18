@@ -43,7 +43,7 @@
 @media (max-width: 640px) {
     .projects-grid {
         grid-template-columns: 1fr;
-        row-gap: 40px;
+        row-gap: 50px;
         column-gap: 0;
     }
 }
