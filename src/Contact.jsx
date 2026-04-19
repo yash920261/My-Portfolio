@@ -1,9 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Underline from './Components/Underline'
 import './Contact.css'
 import { paperPlaneOutline } from 'ionicons/icons'
 import { IonIcon } from '@ionic/react'
+import emailjs from '@emailjs/browser';
 function Contact() {
+    const [name, setName] = useState('');
+    const [nameErr, setNameErr] = useState(false);
+    const [email, setEmail] = useState('');
+    const [emailErr, setEmailErr] = useState(false);
+    const [msg, setMsg] = useState('');
+    const [msgErr, setMsgErr] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleName = (e) => {
+        setName(e.target.value);
+
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+
+    }
+
+    const handleMsg = (e) => {
+        setMsg(e.target.value);
+
+    }
+
+
+    const sendEmail = async () => {
+
+        const templateParams = {
+            user_name: name,
+            user_email: email,
+            message: msg,
+        };
+
+        await emailjs.send(
+            import.meta.env.VITE_SERVICE_ID,
+            import.meta.env.VITE_TEMPLATE_ID,
+            templateParams,
+            import.meta.env.VITE_PUBLIC_KEY
+        );
+
+
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (name && email && msg) {
+            try {
+                setLoading(true);
+
+                await sendEmail();
+
+                setNameErr(false);
+                setEmailErr(false);
+                setMsgErr(false);
+
+                alert('Message sent successfully!');
+            } catch (err) {
+                console.log(err);
+                alert("Failed to send message ❌");
+            } finally {
+                setLoading(false);
+            }
+        } else {
+            setNameErr(!name);
+            setEmailErr(!email);
+            setMsgErr(!msg);
+        }
+
+
+    }
     return (
         <>
             <div className='heading'>
@@ -16,20 +86,38 @@ function Contact() {
             <div className="contact-form">
                 <div className='sub-heading contact-form-title'>Contact Form</div>
                 <div className='sender-info'>
-                    <input type="text" placeholder='Full Name' />
-                    <input type="email" placeholder='Email' />
+                    <input value={name} onChange={(e) => {
+                        handleName(e);
+                    }} type="text" placeholder='Full Name' />
+                    <input value={email} onChange={(e) => {
+                        handleEmail(e);
+                    }} type="email" placeholder='Email' />
                 </div>
                 <div className='sender-info'>
-                    <textarea name="" id=""></textarea>
+                    <textarea value={msg} onChange={(e) => {
+                        handleMsg(e);
+                    }} name="" id=""></textarea>
                 </div>
+                {
+                    nameErr ? <p>Enter name properly</p> :
+                        emailErr ? <p>Enter email properly</p> :
+                            msgErr ? <p>Enter a valid message</p> : null
+                }
 
                 <div className='btn-container'>
-                    <button className='send-msg-btn'>
-                        <IonIcon icon={paperPlaneOutline} />
-                        Send message
+                    <button disabled={loading} onClick={handleSubmit} className='send-msg-btn'>
+                        {
+                            loading ? <div className="loader"></div> :
+                                <>
+                                    <IonIcon icon={paperPlaneOutline} />
+                                    Send message
+                                </>
+                        }
+
                     </button>
                 </div>
             </div>
+
         </>
     )
 }
